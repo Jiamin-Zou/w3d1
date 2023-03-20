@@ -126,7 +126,7 @@ at that index. If the size of any argument is less than `self`, `nil` is
 returned for that location.
 
 Example:
-
+```ruby
 a = [ 4, 5, 6 ]
 b = [ 7, 8, 9 ]
 [1, 2, 3].my_zip(a, b) # => [[1, 4, 7], [2, 5, 8], [3, 6, 9]]

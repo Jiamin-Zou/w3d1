@@ -47,10 +47,28 @@ class Array
         new_arr = Array.new(self.length) {Array.new(arg.length + 1)}
         arg.unshift(self)
         new_arr = (0...self.length).map do |i|
-            arg.map do |arr| arr[i]
-            end
+            arg.map {|arr| arr[i]}
         end
         return new_arr
+    end
+
+    def my_rotate(n=1)
+        new_arr = []
+        new_arr.replace(self)
+        case 
+        when n > 0
+            n.times do
+                ele = new_arr.shift
+                new_arr << ele
+            end
+        when n < 0
+            n *= -1
+            n.times do
+                ele = new_arr.pop
+                new_arr.unshift(ele)
+            end
+        end
+        new_arr
     end
 
 end
