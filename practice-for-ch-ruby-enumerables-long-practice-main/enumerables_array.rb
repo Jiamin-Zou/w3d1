@@ -31,11 +31,24 @@ class Array
         return true
     end
 
-    def my_flatten(arr)
-        return [arr] if !arr.is_a?(Array)
+    def my_flatten
         new_arr = []
-        arr.each do |ele|
-            new_arr += my_flatten(ele)
+        self.each do |ele|
+            if ele.is_a?(Array)
+                new_arr += ele.my_flatten
+            else
+                new_arr << ele
+            end
+        end
+        return new_arr
+    end
+
+    def my_zip(*arg)
+        new_arr = Array.new(self.length) {Array.new(arg.length + 1)}
+        arg.unshift(self)
+        new_arr = (0...self.length).map do |i|
+            arg.map do |arr| arr[i]
+            end
         end
         return new_arr
     end
