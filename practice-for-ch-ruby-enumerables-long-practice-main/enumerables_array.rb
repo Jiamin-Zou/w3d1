@@ -71,4 +71,16 @@ class Array
         new_arr
     end
 
+    def my_join(str="")
+        new_str = ""
+        self.each_with_index do |ele, i|
+            if i == self.length - 1
+                new_str += ele.to_s
+            else
+                new_str += ele.to_s + str
+            end
+        end
+        new_str
+    end
+
 end
